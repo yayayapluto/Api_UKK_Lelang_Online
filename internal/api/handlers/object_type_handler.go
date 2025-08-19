@@ -60,7 +60,7 @@ func (o *objectTypeHandler) List(ctx *fiber.Ctx) error {
 
 	paginationRes := pagination.NewResponseMetaData[entities.ObjectType](page, currentPageUrl, *objectTypes, firstPageUrl, nextPageUrl, size, prevPageUrl)
 
-	return presenters.SuccessResponse[pagination.ResponseMetaData[entities.ObjectType]](ctx, fiber.StatusOK, "Success retrieve object types list", &paginationRes, nil)
+	return presenters.SuccessResponse[pagination.ResponseMetaData[entities.ObjectType]](ctx, fiber.StatusOK, "Success retrieve object types list", &paginationRes)
 }
 
 func (o *objectTypeHandler) Create(ctx *fiber.Ctx) error {
@@ -69,8 +69,17 @@ func (o *objectTypeHandler) Create(ctx *fiber.Ctx) error {
 }
 
 func (o *objectTypeHandler) Get(ctx *fiber.Ctx) error {
-	//TODO implement me
-	panic("implement me")
+	id, err := ctx.ParamsInt("id")
+	if err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "invalid id param", err)
+	}
+
+	ot, err := o.s.GetObjectType(ctx.UserContext(), uint(id))
+	if err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "failed get object type detail", err)
+	}
+
+	return presenters.SuccessResponse[entities.ObjectType](ctx, fiber.StatusOK, "successfully get object type detail", ot)
 }
 
 func (o *objectTypeHandler) Update(ctx *fiber.Ctx) error {

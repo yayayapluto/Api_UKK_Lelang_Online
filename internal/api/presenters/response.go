@@ -9,12 +9,11 @@ type Response[T any] struct {
 	Error   error  `json:"error"`
 }
 
-func SuccessResponse[T any](c *fiber.Ctx, statusCode int, message string, content *T, error error) error {
+func SuccessResponse[T any](c *fiber.Ctx, statusCode int, message string, content *T) error {
 	return c.Status(statusCode).JSON(Response[T]{
 		Success: true,
 		Message: message,
 		Content: content,
-		Error:   error,
 	})
 }
 

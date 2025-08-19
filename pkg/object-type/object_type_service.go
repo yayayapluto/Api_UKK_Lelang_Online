@@ -32,11 +32,11 @@ func (o objectTypeService) CreateObjectType(ctx context.Context, ot *entities.Ob
 }
 
 func (o objectTypeService) GetObjectType(ctx context.Context, id uint) (*entities.ObjectType, error) {
-	return o.GetObjectType(ctx, id)
+	return o.repo.GetObjectType(ctx, id)
 }
 
 func (o objectTypeService) UpdateObjectType(ctx context.Context, ot entities.ObjectType) (*entities.ObjectType, error) {
-	return o.UpdateObjectType(ctx, ot)
+	return o.repo.UpdateObjectType(ctx, ot)
 }
 
 func (o objectTypeService) DeleteObjectType(ctx context.Context, id uint) error {

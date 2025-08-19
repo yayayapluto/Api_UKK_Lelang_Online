@@ -187,7 +187,7 @@
         <entry key="file://$PROJECT_DIR$/internal/api/handlers/object_type_handler.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1755527411856" />
+              <option name="lastModified" value="1755567609140" />
               <option name="schema">
                 <list>
                   <option value="objectTypeHandler" />
@@ -199,7 +199,7 @@
         <entry key="file://$PROJECT_DIR$/internal/api/presenters/response.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1755524701980" />
+              <option name="lastModified" value="1755567278275" />
               <option name="schema">
                 <list>
                   <option value="Response" />
@@ -211,7 +211,7 @@
         <entry key="file://$PROJECT_DIR$/internal/api/routes/route.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1755525398801" />
+              <option name="lastModified" value="1755567305588" />
               <option name="schema">
                 <list>
                   <option value="RouteConfig" />
@@ -292,7 +292,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/object-type/object_type_service.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1755526495993" />
+              <option name="lastModified" value="1755567586486" />
               <option name="schema">
                 <list>
                   <option value="objectTypeService" />
