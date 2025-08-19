@@ -12,6 +12,6 @@ type (
 	}
 
 	ObjectTypeUpdateRequest struct {
-		Name string `json:"name,omitempty" validate:"min=4"`
+		Name *string `json:"name,omitempty" validate:"min=4"`
 	}
 )

@@ -24,6 +24,8 @@ func (r *RouteConfig) ping() {
 func (r *RouteConfig) ObjectType() {
 	group := r.App.Group("/api/v1/objectTypes")
 	group.Get("/", r.ObjectTypeHandler.List)
-	group.Get("/:id", r.ObjectTypeHandler.Get)
 	group.Post("/", r.ObjectTypeHandler.Create)
+	group.Get("/:id", r.ObjectTypeHandler.Get)
+	group.Put("/:id", r.ObjectTypeHandler.Update)
+	group.Delete("/:id", r.ObjectTypeHandler.Delete)
 }

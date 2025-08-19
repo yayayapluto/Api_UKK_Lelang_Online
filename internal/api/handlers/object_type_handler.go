@@ -108,11 +108,41 @@ func (o *objectTypeHandler) Get(ctx *fiber.Ctx) error {
 }
 
 func (o *objectTypeHandler) Update(ctx *fiber.Ctx) error {
-	//TODO implement me
-	panic("implement me")
+	id, err := ctx.ParamsInt("id")
+	if err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "invalid id param", err)
+	}
+
+	var ur domain.ObjectTypeUpdateRequest
+	if err := ctx.BodyParser(&ur); err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "Invalid body request: (name: min=4)", nil)
+	}
+
+	if err := o.v.Struct(ur); err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "validation failed", err)
+	}
+
+	ot := &entities.ObjectType{
+		ID:   uint(id),
+		Name: *ur.Name,
+	}
+
+	res, err := o.s.UpdateObjectType(ctx.UserContext(), *ot)
+	if err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "failed to update object type", err)
+	}
+
+	return presenters.SuccessResponse[entities.ObjectType](ctx, fiber.StatusOK, "successfully update object type", res)
 }
 
 func (o *objectTypeHandler) Delete(ctx *fiber.Ctx) error {
-	//TODO implement me
-	panic("implement me")
+	id, err := ctx.ParamsInt("id")
+	if err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "invalid id param", err)
+	}
+	if err := o.s.DeleteObjectType(ctx.UserContext(), uint(id)); err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "failed to delete object type", err)
+	}
+
+	return presenters.SuccessResponse[any](ctx, fiber.StatusOK, "successfully remove object type", nil)
 }

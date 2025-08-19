@@ -107,7 +107,7 @@ func (o *objectTypeRepository) UpdateObjectType(ctx context.Context, ot entities
 }
 
 func (o *objectTypeRepository) DeleteObjectType(ctx context.Context, id uint) error {
-	if err := o.db.WithContext(ctx).Delete("id = ?", id).Error; err != nil {
+	if err := o.db.WithContext(ctx).Model(&entities.ObjectType{}).Delete("id = ?", id).Error; err != nil {
 		return err
 	}
 	return nil

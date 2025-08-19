@@ -54,6 +54,9 @@ func (o objectTypeService) GetObjectType(ctx context.Context, id uint) (*entitie
 }
 
 func (o objectTypeService) UpdateObjectType(ctx context.Context, ot entities.ObjectType) (*entities.ObjectType, error) {
+	if ot.Name == "" {
+		return nil, nil
+	}
 	return o.repo.UpdateObjectType(ctx, ot)
 }
 
