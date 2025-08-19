@@ -6,23 +6,26 @@ type Response[T any] struct {
 	Success bool   `json:"success"`
 	Message string `json:"message"`
 	Content *T     `json:"content"`
-	Error   *error `json:"error"`
+	Error   any    `json:"error"`
 }
 
-func SuccessResponse[T any](c *fiber.Ctx, statusCode int, message string, content *T, error *error) error {
+func SuccessResponse[T any](c *fiber.Ctx, statusCode int, message string, content *T) error {
 	return c.Status(statusCode).JSON(Response[T]{
 		Success: true,
 		Message: message,
 		Content: content,
-		Error:   error,
 	})
 }
 
-func ErrorResposne[T any](c *fiber.Ctx, statusCode int, message string, content *T, error *error) error {
-	return c.Status(statusCode).JSON(Response[T]{
-		Success: true,
+func ErrorResponse(c *fiber.Ctx, statusCode int, message string, err error) error {
+	var errMsg any
+	if err != nil {
+		errMsg = err.Error()
+	}
+
+	return c.Status(statusCode).JSON(Response[any]{
+		Success: false,
 		Message: message,
-		Content: content,
-		Error:   error,
+		Error:   errMsg,
 	})
 }

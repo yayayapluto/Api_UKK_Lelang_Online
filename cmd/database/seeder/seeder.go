@@ -6,7 +6,9 @@ import (
 )
 
 func Seed(db *gorm.DB) error {
-	_ = db
+
+	ObjectTypeSeeder(db, 50)
+
 	fmt.Println("Seeding done")
 	return nil
 }

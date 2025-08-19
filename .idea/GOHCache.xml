@@ -1,12 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="GoORMHelperCache">
+    <option name="schemaMapping">
+      <map>
+        <entry key="Env">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/internal/utils/get_env.go" />
+              <option value="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/config.go" />
+              <option value="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/config/config.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ObjectType">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/entities/object_type_model.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ObjectTypeCreateRequest">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/domain/object_type_domain.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ObjectTypeUpdateRequest">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/domain/object_type_domain.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="RequestMetaData">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/internal/utils/pagination/request_pagination.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Response">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/internal/api/presenters/response.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ResponseMetaData">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/internal/utils/pagination/response_pagination.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="RouteConfig">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/internal/api/routes/route.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Timestamp">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/entities/timestamp.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="objectTypeHandler">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/internal/api/handlers/object_type_handler.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="objectTypeRepository">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/pkg/object-type/object_type_repository.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="objectTypeService">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/pkg/object-type/object_type_service.go" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="scannedPathMapping">
       <map>
         <entry key="file://$PROJECT_DIR$/cmd/config/app_config.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1755325845526" />
+              <option name="lastModified" value="1755525130933" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/cmd/config/database_config.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755326597459" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/cmd/database/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755326522365" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/cmd/database/migrate/migrate.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755571133596" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/cmd/database/seeder/object_type_seed.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755571176019" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/cmd/database/seeder/seeder.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755522393606" />
             </ScannedPath>
           </value>
         </entry>
@@ -17,6 +142,129 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/domain/common_domain.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755591566581" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/domain/object_type_domain.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755591566558" />
+              <option name="schema">
+                <list>
+                  <option value="ObjectTypeCreateRequest" />
+                  <option value="ObjectTypeUpdateRequest" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/entities/object_type_model.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755571042084" />
+              <option name="schema">
+                <list>
+                  <option value="ObjectType" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/entities/timestamp.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755242325613" />
+              <option name="schema">
+                <list>
+                  <option value="Timestamp" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/internal/api/handlers/object_type_handler.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755573457054" />
+              <option name="schema">
+                <list>
+                  <option value="objectTypeHandler" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/internal/api/presenters/response.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755572142385" />
+              <option name="schema">
+                <list>
+                  <option value="Response" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/internal/api/routes/route.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755573468621" />
+              <option name="schema">
+                <list>
+                  <option value="RouteConfig" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/internal/utils/get_env.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755244755574" />
+              <option name="schema">
+                <list>
+                  <option value="Env" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/internal/utils/pagination/page_url_builder.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755526684232" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/internal/utils/pagination/request_pagination.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755250549466" />
+              <option name="schema">
+                <list>
+                  <option value="RequestMetaData" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/internal/utils/pagination/response_pagination.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755526148425" />
+              <option name="schema">
+                <list>
+                  <option value="ResponseMetaData" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/internal/utils/password.go">
           <value>
             <ScannedPath>
@@ -24,8 +272,93 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/internal/utils/validator.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755245075790" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/object-type/object_type_repository.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755591668363" />
+              <option name="schema">
+                <list>
+                  <option value="objectTypeRepository" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/object-type/object_type_service.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755591689489" />
+              <option name="schema">
+                <list>
+                  <option value="objectTypeService" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/config.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755586756902" />
+              <option name="schema">
+                <list>
+                  <option value="Env" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/config/config.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755586902513" />
+              <option name="schema">
+                <list>
+                  <option value="Env" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/fcm/fcm.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755590172328" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755591835527" />
+            </ScannedPath>
+          </value>
+        </entry>
       </map>
     </option>
-    <option name="lastTimeChecked" value="1755325091441" />
+    <option name="tableStructMapping">
+      <map>
+        <entry key="env" value="Env" />
+        <entry key="object_type" value="ObjectType" />
+        <entry key="object_type_create_request" value="ObjectTypeCreateRequest" />
+        <entry key="object_type_handler" value="objectTypeHandler" />
+        <entry key="object_type_repository" value="objectTypeRepository" />
+        <entry key="object_type_service" value="objectTypeService" />
+        <entry key="object_type_update_request" value="ObjectTypeUpdateRequest" />
+        <entry key="request_meta_data" value="RequestMetaData" />
+        <entry key="response" value="Response" />
+        <entry key="response_meta_data" value="ResponseMetaData" />
+        <entry key="route_config" value="RouteConfig" />
+        <entry key="timestamp" value="Timestamp" />
+      </map>
+    </option>
+    <option name="lastTimeChecked" value="1755521679860" />
   </component>
 </project>
