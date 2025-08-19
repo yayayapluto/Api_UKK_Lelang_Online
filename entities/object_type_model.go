@@ -2,6 +2,6 @@ package entities
 
 type ObjectType struct {
 	ID   uint   `gorm:"primaryKey; autoIncrement" json:"id"`
-	Name string `gorm:"uniqueIndex, not null" json:"name"`
+	Name string `gorm:"unique; not null" json:"name"`
 	Timestamp
 }

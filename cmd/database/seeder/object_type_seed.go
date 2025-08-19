@@ -16,7 +16,8 @@ func ObjectTypeSeeder(db *gorm.DB, q int) {
 			Name: gofakeit.LoremIpsumWord(),
 		}
 		if err := db.Create(data).Error; err != nil {
-			panic(err)
+			fmt.Println("skipped")
+			continue
 		}
 	}
 	fmt.Println("Seeding object type done")

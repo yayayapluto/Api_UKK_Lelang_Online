@@ -1,19 +1,9 @@
 package domain
 
-var (
-	MessageObjectTypeSuccessRetrieve  = "Object types retrieved successfully"
-	MessageObjectTypeSuccessCreate    = "Object type created successfully"
-	MessageObjectTypeSuccessGetDetail = "Object type detail retrieved successfully"
-	MessageObjectTypeSuccessUpdate    = "Object type updated successfully"
-	MessageObjectTypeSuccessDelete    = "Object type deleted successfully"
-	MessageObjectTypeFailedRetrieve   = "Object types retrieved failed"
-	MessageObjectTypeFailedCreate     = "Object type created failed"
-	MessageObjectTypeFailedGet        = "Object type detail retrieved failed"
-	MessageObjectTypeFailedUpdate     = "Object type updated failed"
-	MessageObjectTypeFailedDelete     = "Object type deleted failed"
+import "errors"
 
-	ErrObjectTypeNotFound     = "object type not found"
-	ErrObjectTypeAlreadyExist = "object type already exists"
+var (
+	ErrObjectTypeAlreadyExists = errors.New("object type already exists")
 )
 
 type (

@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
+	"github.com/yayayapluto/api-ukk-online/domain"
 	"github.com/yayayapluto/api-ukk-online/entities"
 	"github.com/yayayapluto/api-ukk-online/internal/api/presenters"
 	"github.com/yayayapluto/api-ukk-online/internal/utils/pagination"
@@ -39,7 +40,6 @@ func (o *objectTypeHandler) List(ctx *fiber.Ctx) error {
 
 	// minimal 10, maximal 100
 	size = int(math.Min(math.Max(float64(size), 10), 100))
-
 	offset := (page - 1) * size
 
 	sortBy := ctx.Query("sortBy", "id")
@@ -70,8 +70,24 @@ func (o *objectTypeHandler) List(ctx *fiber.Ctx) error {
 }
 
 func (o *objectTypeHandler) Create(ctx *fiber.Ctx) error {
-	//TODO implement me
-	panic("implement me")
+	var cr domain.ObjectTypeCreateRequest
+	if err := ctx.BodyParser(&cr); err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "Invalid body request: (name: not null, min=4)", nil)
+	}
+
+	if err := o.v.Struct(cr); err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "validation failed", err)
+	}
+
+	ot := &entities.ObjectType{
+		Name: cr.Name,
+	}
+
+	if err := o.s.CreateObjectType(ctx.UserContext(), ot); err != nil {
+		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "failed to create new object type", err)
+	}
+
+	return presenters.SuccessResponse[entities.ObjectType](ctx, fiber.StatusOK, "successfully create new object type", ot)
 }
 
 func (o *objectTypeHandler) Get(ctx *fiber.Ctx) error {

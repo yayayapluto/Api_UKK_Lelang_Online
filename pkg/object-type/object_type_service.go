@@ -2,6 +2,8 @@ package objectType
 
 import (
 	"context"
+	"errors"
+	"github.com/yayayapluto/api-ukk-online/domain"
 	"github.com/yayayapluto/api-ukk-online/entities"
 	"gorm.io/gorm"
 )
@@ -29,7 +31,13 @@ func (o objectTypeService) ListObjectType(ctx context.Context, search string, of
 }
 
 func (o objectTypeService) CreateObjectType(ctx context.Context, ot *entities.ObjectType) error {
-	return o.repo.CreateObjectType(ctx, ot)
+	if err := o.repo.CreateObjectType(ctx, ot); err != nil {
+		if errors.Is(err, gorm.ErrDuplicatedKey) {
+			return domain.ErrObjectTypeAlreadyExists
+		}
+		return err
+	}
+	return nil
 }
 
 func (o objectTypeService) GetObjectType(ctx context.Context, id uint) (*entities.ObjectType, error) {
