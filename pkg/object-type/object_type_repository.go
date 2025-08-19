@@ -53,19 +53,21 @@ func (o *objectTypeRepository) ListObjectType(ctx context.Context, search string
 
 	orderStr := fmt.Sprintf("%s %s", defSortBy, defSortDir)
 
-	query := o.db.WithContext(ctx).Limit(limit).Offset(offset).Order(orderStr)
+	query := o.db.WithContext(ctx).Model(&entities.ObjectType{})
 
-	if search != "" && len(search) != 0 {
+	if search != "" {
 		sq := "%" + search + "%"
-		query = query.Where("name LIKE ?", sq)
+		query = query.Where("name ILIKE ?", sq) // biar case-insensitive di postgres
 	}
 
-	if err := query.Find(&objectTypes).Error; err != nil {
+	// count harus setelah filter
+	var total int64
+	if err := query.Count(&total).Error; err != nil {
 		return nil, 0, err
 	}
 
-	var total int64
-	if err := o.db.WithContext(ctx).Model(&entities.ObjectType{}).Count(&total).Error; err != nil {
+	// apply pagination & sorting
+	if err := query.Offset(offset).Limit(limit).Order(orderStr).Find(&objectTypes).Error; err != nil {
 		return nil, 0, err
 	}
 
@@ -85,7 +87,10 @@ func (o *objectTypeRepository) CreateObjectType(ctx context.Context, ot *entitie
 
 func (o *objectTypeRepository) GetObjectType(ctx context.Context, id uint) (*entities.ObjectType, error) {
 	var objectType entities.ObjectType
-	if err := o.db.WithContext(ctx).Where("id = ?", id).First(&objectType).Error; err != nil {
+	if err := o.db.WithContext(ctx).First(&objectType, id).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, gorm.ErrRecordNotFound
+		}
 		return nil, err
 	}
 	return &objectType, nil
@@ -94,21 +99,33 @@ func (o *objectTypeRepository) GetObjectType(ctx context.Context, id uint) (*ent
 func (o *objectTypeRepository) GetObjectTypeByName(ctx context.Context, name string) (*entities.ObjectType, error) {
 	var objectType entities.ObjectType
 	if err := o.db.WithContext(ctx).Where("name = ?", name).First(&objectType).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, gorm.ErrRecordNotFound
+		}
 		return nil, err
 	}
 	return &objectType, nil
 }
 
 func (o *objectTypeRepository) UpdateObjectType(ctx context.Context, ot entities.ObjectType) (*entities.ObjectType, error) {
-	if err := o.db.WithContext(ctx).Where("id = ?", ot.ID).Updates(&ot).Error; err != nil {
+	// only update non-zero fields
+	if err := o.db.WithContext(ctx).Model(&entities.ObjectType{}).
+		Where("id = ?", ot.ID).
+		Updates(map[string]interface{}{
+			"name": ot.Name,
+		}).Error; err != nil {
 		return nil, err
 	}
 	return &ot, nil
 }
 
 func (o *objectTypeRepository) DeleteObjectType(ctx context.Context, id uint) error {
-	if err := o.db.WithContext(ctx).Model(&entities.ObjectType{}).Delete("id = ?", id).Error; err != nil {
-		return err
+	tx := o.db.WithContext(ctx).Where("id = ?", id).Delete(&entities.ObjectType{})
+	if tx.Error != nil {
+		return tx.Error
+	}
+	if tx.RowsAffected == 0 {
+		return gorm.ErrRecordNotFound
 	}
 	return nil
 }

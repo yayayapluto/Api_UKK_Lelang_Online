@@ -7,6 +7,8 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/internal/utils/get_env.go" />
+              <option value="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/config.go" />
+              <option value="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/config/config.go" />
             </set>
           </value>
         </entry>
@@ -143,14 +145,14 @@
         <entry key="file://$PROJECT_DIR$/domain/common_domain.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1755247839430" />
+              <option name="lastModified" value="1755591566581" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/domain/object_type_domain.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1755572937346" />
+              <option name="lastModified" value="1755591566558" />
               <option name="schema">
                 <list>
                   <option value="ObjectTypeCreateRequest" />
@@ -280,7 +282,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/object-type/object_type_repository.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1755573654730" />
+              <option name="lastModified" value="1755591668363" />
               <option name="schema">
                 <list>
                   <option value="objectTypeRepository" />
@@ -292,12 +294,50 @@
         <entry key="file://$PROJECT_DIR$/pkg/object-type/object_type_service.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1755572818570" />
+              <option name="lastModified" value="1755591689489" />
               <option name="schema">
                 <list>
                   <option value="objectTypeService" />
                 </list>
               </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/config.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755586756902" />
+              <option name="schema">
+                <list>
+                  <option value="Env" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/config/config.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755586902513" />
+              <option name="schema">
+                <list>
+                  <option value="Env" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/fcm/fcm.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755590172328" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../../../../Telkom/test-fcm-hit/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1755591835527" />
             </ScannedPath>
           </value>
         </entry>

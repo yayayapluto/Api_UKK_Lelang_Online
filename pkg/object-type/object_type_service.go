@@ -3,6 +3,7 @@ package objectType
 import (
 	"context"
 	"errors"
+
 	"github.com/yayayapluto/api-ukk-online/domain"
 	"github.com/yayayapluto/api-ukk-online/entities"
 	"gorm.io/gorm"
@@ -43,23 +44,35 @@ func (o objectTypeService) CreateObjectType(ctx context.Context, ot *entities.Ob
 func (o objectTypeService) GetObjectType(ctx context.Context, id uint) (*entities.ObjectType, error) {
 	ot, err := o.repo.GetObjectType(ctx, id)
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, domain.ErrObjectTypeNotFound
+		}
 		return nil, err
 	}
-
-	if ot == nil {
-		return nil, gorm.ErrRecordNotFound
-	}
-
 	return ot, nil
 }
 
 func (o objectTypeService) UpdateObjectType(ctx context.Context, ot entities.ObjectType) (*entities.ObjectType, error) {
 	if ot.Name == "" {
-		return nil, nil
+		return nil, domain.ErrInvalidPayload // jangan return nil, nil
 	}
-	return o.repo.UpdateObjectType(ctx, ot)
+	updated, err := o.repo.UpdateObjectType(ctx, ot)
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, domain.ErrObjectTypeNotFound
+		}
+		return nil, err
+	}
+	return updated, nil
 }
 
 func (o objectTypeService) DeleteObjectType(ctx context.Context, id uint) error {
-	return o.repo.DeleteObjectType(ctx, id)
+	if err := o.repo.DeleteObjectType(ctx, id); err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return domain.ErrObjectTypeNotFound
+		}
+		return err
+	}
+	return nil
 }
+

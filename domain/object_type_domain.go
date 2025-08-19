@@ -4,6 +4,7 @@ import "errors"
 
 var (
 	ErrObjectTypeAlreadyExists = errors.New("object type already exists")
+	ErrObjectTypeNotFound      = errors.New("object type not found")
 )
 
 type (
