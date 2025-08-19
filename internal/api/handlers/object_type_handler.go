@@ -1,12 +1,14 @@
 package handlers
 
 import (
+	"errors"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 	"github.com/yayayapluto/api-ukk-online/entities"
 	"github.com/yayayapluto/api-ukk-online/internal/api/presenters"
 	"github.com/yayayapluto/api-ukk-online/internal/utils/pagination"
 	objectType "github.com/yayayapluto/api-ukk-online/pkg/object-type"
+	"gorm.io/gorm"
 )
 
 type (
@@ -76,7 +78,10 @@ func (o *objectTypeHandler) Get(ctx *fiber.Ctx) error {
 
 	ot, err := o.s.GetObjectType(ctx.UserContext(), uint(id))
 	if err != nil {
-		return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "failed get object type detail", err)
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return presenters.ErrorResponse(ctx, fiber.StatusBadRequest, "cannot find object type detail with provided id", nil)
+		}
+		return presenters.ErrorResponse(ctx, fiber.StatusInternalServerError, "failed get object type detail", err)
 	}
 
 	return presenters.SuccessResponse[entities.ObjectType](ctx, fiber.StatusOK, "successfully get object type detail", ot)

@@ -3,6 +3,7 @@ package objectType
 import (
 	"context"
 	"github.com/yayayapluto/api-ukk-online/entities"
+	"gorm.io/gorm"
 )
 
 type (
@@ -32,7 +33,16 @@ func (o objectTypeService) CreateObjectType(ctx context.Context, ot *entities.Ob
 }
 
 func (o objectTypeService) GetObjectType(ctx context.Context, id uint) (*entities.ObjectType, error) {
-	return o.repo.GetObjectType(ctx, id)
+	ot, err := o.repo.GetObjectType(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+
+	if ot == nil {
+		return nil, gorm.ErrRecordNotFound
+	}
+
+	return ot, nil
 }
 
 func (o objectTypeService) UpdateObjectType(ctx context.Context, ot entities.ObjectType) (*entities.ObjectType, error) {

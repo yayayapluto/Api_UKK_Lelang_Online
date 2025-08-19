@@ -19,7 +19,7 @@ func SuccessResponse[T any](c *fiber.Ctx, statusCode int, message string, conten
 
 func ErrorResponse(c *fiber.Ctx, statusCode int, message string, error error) error {
 	return c.Status(statusCode).JSON(Response[any]{
-		Success: true,
+		Success: false,
 		Message: message,
 		Error:   error,
 	})
