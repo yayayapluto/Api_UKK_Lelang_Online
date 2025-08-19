@@ -13,6 +13,14 @@ func Migrate(db *gorm.DB) error {
 	if err := db.AutoMigrate(&entities.ObjectType{}); err != nil {
 		panic(err.Error())
 	}
+
+	if err := db.Exec("DROP TABLE IF EXISTS organizers").Error; err != nil {
+		panic(err)
+	}
+	if err := db.AutoMigrate(&entities.Organizer{}); err != nil {
+		panic(err.Error())
+	}
+
 	fmt.Println("Migration done")
 	return nil
 }

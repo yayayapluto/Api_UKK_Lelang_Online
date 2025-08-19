@@ -7,7 +7,9 @@ import (
 
 func Seed(db *gorm.DB) error {
 
-	ObjectTypeSeeder(db, 50)
+	// data master
+	ObjectTypeSeeder(db, 5)
+	OrganizerSeeder(db, 10)
 
 	fmt.Println("Seeding done")
 	return nil

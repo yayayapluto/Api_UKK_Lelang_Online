@@ -8,11 +8,13 @@ import (
 type RouteConfig struct {
 	App               *fiber.App
 	ObjectTypeHandler handlers.ObjectTypeHandler
+	OrganizerHandler  handlers.OrganizerHandler
 }
 
 func (r *RouteConfig) Setup() {
 	r.ping()
 	r.ObjectType()
+	r.Organizer()
 }
 
 func (r *RouteConfig) ping() {
@@ -28,4 +30,13 @@ func (r *RouteConfig) ObjectType() {
 	group.Get("/:id", r.ObjectTypeHandler.Get)
 	group.Put("/:id", r.ObjectTypeHandler.Update)
 	group.Delete("/:id", r.ObjectTypeHandler.Delete)
+}
+
+func (r *RouteConfig) Organizer() {
+	group := r.App.Group("/api/v1/organizers")
+	group.Get("/", r.OrganizerHandler.List)
+	group.Post("/", r.OrganizerHandler.Create)
+	group.Get("/:id", r.OrganizerHandler.Get)
+	group.Put("/:id", r.OrganizerHandler.Update)
+	group.Delete("/:id", r.OrganizerHandler.Delete)
 }
