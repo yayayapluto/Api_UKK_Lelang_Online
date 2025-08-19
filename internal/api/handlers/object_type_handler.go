@@ -9,6 +9,7 @@ import (
 	"github.com/yayayapluto/api-ukk-online/internal/utils/pagination"
 	objectType "github.com/yayayapluto/api-ukk-online/pkg/object-type"
 	"gorm.io/gorm"
+	"math"
 )
 
 type (
@@ -35,6 +36,9 @@ func (o *objectTypeHandler) List(ctx *fiber.Ctx) error {
 
 	page := ctx.QueryInt("page", 1)
 	size := ctx.QueryInt("size", 10)
+
+	// minimal 10, maximal 100
+	size = int(math.Min(math.Max(float64(size), 10), 100))
 
 	offset := (page - 1) * size
 
